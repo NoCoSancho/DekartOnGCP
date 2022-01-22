@@ -16,11 +16,9 @@ gcloud auth login ${USER_EMAIL}
 ##
 ##################################################
 
-
 echo "Creating new project"
 
 gcloud projects create ${PROJECT_ID}
-
 
 echo "Set default project"
 
@@ -32,9 +30,7 @@ gcloud config set project ${PROJECT_ID}
 ##
 ##################################################
 
-
 echo "Assigning billing account"
-
 
 gcloud beta billing projects link ${PROJECT_ID} --billing-account=${BILLING_ACCOUNT_ID}
 
