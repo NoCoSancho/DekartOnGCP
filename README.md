@@ -11,7 +11,7 @@ Steps:
 7) run setup_appengine.sh
 8) run setup_iam.sh
 9) create a mapbox account and PUBLIC token.  Do not select any secret scopes.
-10) clone the dekart repo
+10) clone the dekart repo - git clone https://github.com/dekart-xyz/dekart.git
 11) copy the dockerfile from the dekart repo under ./dekart/install/app-engine/Dockerfile to the root directory of your clone of DekartOnGCP repo.
 12) copy the app.example.yaml file from the dekart repo under ./dekart/install/app-engine/app.example.yaml to the root directory of your clone of DekartOnGCP repo.
 13) compare the app.example.yaml from the dekart repo with the example.yaml from this repo to see if dekart added any new parameters.
