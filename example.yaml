@@ -1,0 +1,34 @@
+# https://cloud.google.com/appengine/docs/flexible/custom-runtimes/configuring-your-app-with-app-yaml#intro
+service: default #DEFAULT
+runtime: custom #DEFAULT
+env: flex #DEFAULT
+
+# this section had to be added to support a non default VPC and subnet
+network:
+  instance_tag: appengine
+  name: demo-vpc #SET THIS
+  subnetwork_name: demo-subnet-1 #SET THIS
+
+manual_scaling:
+   instances: 1 # important as dekart designed to work on single instance
+
+resources:
+   memory_gb: 2.0 # recommended to handle up to 1M points
+
+env_variables:
+  DEKART_LOG_DEBUG: "1" #DEFAULT
+  DEKART_POSTGRES_DB: "dekart" #DEFAULT
+  DEKART_POSTGRES_USER: "dekart" #DEFAULT
+  DEKART_POSTGRES_PASSWORD: "changemeifyourinstanceisopentointernet" #SET THIS
+  DEKART_POSTGRES_PORT: "5432" #DEFAULT
+  # see https://cloud.google.com/sql/docs/mysql/connect-app-engine-flexible
+  DEKART_POSTGRES_HOST: "10.99.132.3" #SET THIS: private IP in our case, vpc peering
+  DEKART_CLOUD_STORAGE_BUCKET: "BucketNameOnly" #SET THIS
+  DEKART_BIGQUERY_PROJECT_ID: "dekart-gcp-project-01" #SET THIS
+  DEKART_BIGQUERY_MAX_BYTES_BILLED: "53687091200" #DEFAULT
+  #Need to create mapbox account and PUBLIC token to get this
+  DEKART_MAPBOX_TOKEN: "pk.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" #SET THIS
+
+beta_settings:
+  # see https://cloud.google.com/sql/docs/mysql/connect-app-engine-flexible
+        cloud_sql_instances: "ProjectidHere:RegionHere:InstanceNameHere=tcp:5432"
