@@ -39,6 +39,29 @@ gcloud compute networks subnets create ${SUBNET_NAME} \
 ##################################################
 ##
 ## Networking
+## Peering for private cloudsql
+##
+##################################################
+
+echo "Creating IP allocation for cloudsql"
+#create IP allocation for cloud sql
+gcloud compute addresses create cloudsql-ip-allocation \
+--global \
+--purpose=VPC_PEERING \
+--prefix-length=24 \
+--network=${VPC_NAME}
+
+echo "Peering IP allocation for cloudsql with VPC"
+#peer cloud sql to project vpc
+gcloud services vpc-peerings update \
+--service=servicenetworking.googleapis.com  \
+--network=${VPC_NAME} \
+--project=${PROJECT_ID} \
+--ranges=cloudsql-ip-allocation --force
+
+##################################################
+##
+## Networking
 ## Create FW rules
 ##
 ##################################################
