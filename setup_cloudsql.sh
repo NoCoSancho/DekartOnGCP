@@ -28,7 +28,7 @@ gcloud beta sql instances create ${DB_INSTANCE_NAME} \
 PENDING_OPERATIONS=$(gcloud sql operations list --instance=${DB_INSTANCE_NAME} --filter='status!=DONE' --format='value(name)')
 
 echo "CloudSQL instance creation request submitted asynchronously, waiting for completion" 
-echo "This may take several minutes..." 
+echo "This may take 10-15 minutes..." 
 
 gcloud sql operations wait "${PENDING_OPERATIONS}"  --timeout=unlimited
 
