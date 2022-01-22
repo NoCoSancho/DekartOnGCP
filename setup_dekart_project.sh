@@ -10,31 +10,41 @@ source ./config.sh
 # prompt user to login
 gcloud auth login ${USER_EMAIL}
 
-echo "### "
-echo "### Creating new project ###"
-echo "### "
+##################################################
+##
+## Project
+##
+##################################################
+
+
+echo "Creating new project"
 
 gcloud projects create ${PROJECT_ID}
 
-echo "### "
-echo "### Assigning billing account ###"
-echo "### "
 
-gcloud beta billing projects link ${PROJECT_ID} --billing-account=${BILLING_ACCOUNT_ID}
+echo "Set default project"
 
-echo "### "
-echo "### Set default project"
-echo "### "
 gcloud config set project ${PROJECT_ID}
 
 ##################################################
 ##
-## Org Policies
-## Allow VPC Peering 
+## Billing
 ##
 ##################################################
 
-echo "configuring org policies"
+
+echo "Assigning billing account"
+
+
+gcloud beta billing projects link ${PROJECT_ID} --billing-account=${BILLING_ACCOUNT_ID}
+
+##################################################
+##
+## Org Policies
+##
+##################################################
+
+echo "configuring org policies at project level"
 
 #enable VPC peering, disabled in argolis
 cat <<EOF > new_policy.yaml
@@ -61,7 +71,6 @@ gcloud resource-manager org-policies set-policy  \
 ##################################################
 ##
 ## Enable APIs
-##  
 ##
 ##################################################
 
@@ -77,9 +86,7 @@ gcloud services enable appengine.googleapis.com
 
 gcloud services enable appengineflex.googleapis.com
 
-#for private service connection
 gcloud services enable servicenetworking.googleapis.com
 
 gcloud services enable sqladmin.googleapis.com
 
-##################################################
