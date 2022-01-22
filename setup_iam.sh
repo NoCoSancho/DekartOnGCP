@@ -22,6 +22,7 @@ gcloud projects add-iam-policy-binding ${PROJECT_ID} \
     --role=roles/cloudbuild.builds.builder
 
 #default app engine service account
+#MUST BE RUN AFTER APP ENGINE INSTANCE CREATION
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \
     --member=serviceAccount:${PROJECT_ID}@appspot.gserviceaccount.com \
     --role=roles/editor
