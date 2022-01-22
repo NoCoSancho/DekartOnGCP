@@ -1,5 +1,8 @@
 # DekartOnGCP
 
+Deploy Dekart on Google Cloud Platform on AppEngine, but without having the default VPC network or a CloudSQL instance that has a public IP.
+
+
 Steps:
 
 1) Set the variables for your environment in the config.sh script
