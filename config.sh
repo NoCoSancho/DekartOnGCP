@@ -39,13 +39,13 @@ export APP_ENGINE_REGION=<insert desired app engine region name>
 ##################################################
 #Example
 ##################################################
-export USER_EMAIL=myuser@mydomain.com
-export PROJECT_ID=dekart-project-01
-export BILLING_ACCOUNT_ID=123456-123456-123456
-export REGION=us-central1
-export ZONE=us-central1-a
-export VPC_NAME=demo-vpc
-export SUBNET_NAME=demo-subnet-1
-export DB_INSTANCE_NAME=cloudsql-postgres12-private
-export APP_ENGINE_REGION=us-central
+# export USER_EMAIL=myuser@mydomain.com
+# export PROJECT_ID=dekart-project-01
+# export BILLING_ACCOUNT_ID=123456-123456-123456
+# export REGION=us-central1
+# export ZONE=us-central1-a
+# export VPC_NAME=demo-vpc
+# export SUBNET_NAME=demo-subnet-1
+# export DB_INSTANCE_NAME=cloudsql-postgres12-private
+# export APP_ENGINE_REGION=us-central
 ##################################################
