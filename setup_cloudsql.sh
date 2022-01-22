@@ -10,6 +10,8 @@ source ./config.sh
 # prompt user to login
 gcloud auth login ${USER_EMAIL}
 
+gcloud config set project ${PROJECT_ID}
+
 echo "Creating Private CloudSQL (Postgres) Instance Asynchronously"
 
 #private instance!
